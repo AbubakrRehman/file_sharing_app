@@ -16,7 +16,7 @@ const fileSchema=new mongoose.Schema({
         required:true
     },
     uuid:{
-        type:Number,
+        type:String,
         required:true
     },
     sender:{
