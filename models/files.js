@@ -1,5 +1,6 @@
 const { type } = require("express/lib/response");
 const mongoose=require("mongoose");
+require('dotenv').config();
 
 
 const fileSchema=new mongoose.Schema({
@@ -30,6 +31,6 @@ const fileSchema=new mongoose.Schema({
 },{timestamps:true});
 
 
-const File=mongoose.model('file',fileSchema);
+const File=mongoose.model(`${process.env.DB_COLLECTION}`,fileSchema);
 
 module.exports=File;
