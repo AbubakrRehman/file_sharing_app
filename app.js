@@ -11,6 +11,8 @@ require("./config/db_connection.js");
 
 //Routes
 app.use("/",require("./routes/upload.js"));
+app.use("/",require("./routes/file.js"));
+
 
 
 
