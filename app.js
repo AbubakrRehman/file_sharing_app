@@ -1,10 +1,16 @@
 const express=require("express");
 const app=express();
+const upload=require("./routes/upload.js");
+require("./config/db_connection.js");
 
 
-app.get("/",(req,res)=>{
-    res.send("Hello abu!!");
-});
+
+//middlewares
+app.use(express.urlencoded());
+app.use(express.json());
+
+//Routes
+app.use("/",upload);
 
 
 module.exports=app;
