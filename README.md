@@ -1,7 +1,7 @@
 
 # shareIT
 
-Simple nodejs web application for file sharing. 
+Simple nodejs web application facilating cloud storage and file sharing. 
 
 ## Tech Stack
 
