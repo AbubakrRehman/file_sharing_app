@@ -1,28 +1,21 @@
-const nodemailer=require('nodemailer');
+const express=require('express');
+const router=express.Router();
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    secure:false,
-    port:587,
-    requireTLS:true,
-    auth: {
-      user: 'abubakr.rehman91@gmail.com',
-      pass: 'Abubakr@@@7086',
-     
+
+
+router.post("/sendEmail",async (req,res)=>{
+    const {to,from,subject,text} =req.body;
+    try{
+        await require("../services/sendMail.js")(to,from,subject,text);
+        res.status(200).send('Email sent sucessfully');
+
     }
-  });
-
-  var mailOptions = {
-    from: 'abhishekpjadhav111@gmail.com',
-    to: 'abubakr.rehman91@outlook.com',
-    subject: 'Sending Email using Node.js',
-    text: 'That was easy!'
-  };
-
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
+    catch(err){
+        res.status(500).send('Some internal problem occured');
     }
-  });
+    
+});
+
+
+
+module.exports=router;
